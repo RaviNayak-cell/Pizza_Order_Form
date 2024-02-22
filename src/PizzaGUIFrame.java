@@ -54,7 +54,9 @@ public class PizzaGUIFrame extends JFrame {
         orderPlaced = false;
     }
 
-    public PizzaOrderFrame()
+    private double subTotal;
+
+    public PizzaGUIFrame()
     {
         mainPanel = new JPanel();
         mainPanel.setLayout(new BorderLayout());
@@ -74,8 +76,7 @@ public class PizzaGUIFrame extends JFrame {
         setVisible(true);
     }
 
-    private void createOptionPanel()
-    {
+    private void createOptionPanel() {
         optionPanel = new JPanel();
         optionPanel.setLayout(new GridLayout());
 
@@ -97,10 +98,70 @@ public class PizzaGUIFrame extends JFrame {
         crustChoicesGroup.add(regularRB);
         crustChoicesGroup.add(deepDishRB);
 
+        sizeSelectCB = new JComboBox();
+        sizeSelectCB.addItem("Small    ($8.00)");
+        sizeSelectCB.addItem("Medium   ($12.00)");
+        sizeSelectCB.addItem("Large    ($16.00)");
+        sizeSelectCB.addItem("Super    ($20.00)");
+
         optionPanel.add(sizeSelectCB);
 
-        
+        pepperoniChB = new JCheckBox("Pepperoni");
+        sausageChB = new JCheckBox("Sausage");
+        baconChB = new JCheckBox("Bacon");
+        chickenChB = new JCheckBox("Chicken");
+        peppersChB = new JCheckBox("Peppers");
+        olivesChB = new JCheckBox("Olives");
+        extraCheeseChB = new JCheckBox("Extra Cheese");
+        anchoviesChB = new JCheckBox("Anchovies");
+
+        optionPanel.add(pepperoniChB);
+        optionPanel.add(sausageChB);
+        optionPanel.add(baconChB);
+        chickenChB.add(chickenChB);
+        peppersChB.add(peppersChB);
+        optionPanel.add(olivesChB);
+        optionPanel.add(extraCheeseChB);
+        optionPanel.add(anchoviesChB);
     }
+
+    private void createControlPanel()
+    {
+        Border titleBorder = BorderFactory.createTitledBorder("Options");
+        controlPanel = new JPanel();
+        controlPanel.setLayout(new GridLayout(1,4));
+
+        orderButton = new JButton("Order");
+        orderButton.addActionListener((ActionEvent ae) -> placeOrder());
+        clearButton = new JButton("Clear");
+        clearButton.addActionListener((ActionEvent ae) -> clearOrder());
+        quitButton = new JButton("Quit");
+        quitButton.addActionListener((ActionEvent ae) -> System.exit(0));
+        controlPanel.add(orderButton);
+        controlPanel.add(clearButton);
+        controlPanel.add(quitButton);
+        controlPanel.setBorder(titleBorder);
+    }
+
+    private void createOrderDisplayPanel()
+    {
+        orderDisplayPanel = new JPanel();
+        orderTextArea = new JTextArea();
+        Border titleBorder = BorderFactory.createTitledBorder("Order");
+        orderDisplayPanel.setBorder(titleBorder);
+        orderDisplayPanel.add(orderTextArea);
+    }
+
+    public void placeOrder()
+    {
+
+        if(!orderPlaced)
+        {
+
+        }
+    }
+
+
 
 
 
